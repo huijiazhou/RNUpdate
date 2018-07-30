@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "27.0.3"
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+//task makeJar(type: Copy) {
+//    delete 'build/libs/react_native_update_jsbundle.jar' //删除已经存在的jar包
+//    from('build/intermediates/bundles/release/')//从该目录下加载要打包的文件
+//    into('build/libs/')//jar包的保存目录
+////    include('classes.jar')//设置过滤，只打包classes文件
+//    rename('classes.jar', 'react_native_update_jsbundle.jar')//重命名，mylibrary.jar 根据自己的需求设置
+//}
+//makeJar.dependsOn(build)
+dependencies {
+
+    def retrofitVersion = '2.3.0'
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:26.1.0'
+//    testCompile 'junit:junit:4.12'
+//    androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.2', {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    })
+
+    compile 'com.squareup.okhttp3:okhttp:3.1.2'
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    //添加返回的字符串支付
+    compile "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
+    implementation 'com.google.code.gson:gson:2.8.0'
+
+}
