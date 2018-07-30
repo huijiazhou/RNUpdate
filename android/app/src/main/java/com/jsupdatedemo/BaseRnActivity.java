@@ -90,10 +90,10 @@ public class BaseRnActivity extends Activity implements DefaultHardwareBackBtnHa
     }
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-//        if (keyCode == KeyEvent.KEYCODE_MENU && mReactInstanceManager != null) {
-//            mReactInstanceManager.showDevOptionsDialog();
-//            return true;
-//        }
+        if (keyCode == KeyEvent.KEYCODE_MENU && mReactInstanceManager != null) {
+            mReactInstanceManager.showDevOptionsDialog();
+            return true;
+        }
         return super.onKeyUp(keyCode, event);
     }
 
